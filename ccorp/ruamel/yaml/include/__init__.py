@@ -105,7 +105,7 @@ def include_compositor(self, anchor):
     event = self.parser.get_event()
     yaml = self.loader.fork()
     path = os.path.join(os.path.dirname(self.loader.reader.name), event.value)
-    with open(path) as f:
+    with open(os.path.abspath(path)) as f:
         return yaml.compose(f)
 
 
