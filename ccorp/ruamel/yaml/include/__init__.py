@@ -51,7 +51,7 @@ class ExcludingConstructor(ruamel.yaml.constructor.Constructor):
                 if not any(f(key_node, value_node) for f in self.filters[MappingNode])]
         return super().construct_mapping(node)
     
-    def construct_sequence(self, node):
+    def construct_sequence(self, node, deep=True):
         node.value = [value_node for value_node in node.value if not any(f(value_node) for f in self.filters[SequenceNode])]
         return super().construct_sequence(node)
 
