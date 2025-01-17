@@ -97,7 +97,6 @@ class YAML(ruamel.yaml.YAML):
 
     def fork(self):
         yaml = type(self)(typ=self.typ, pure=self.pure)
-        yaml.composer.anchors = self.composer.anchors
         return yaml
 
 
