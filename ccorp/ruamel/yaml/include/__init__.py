@@ -106,7 +106,9 @@ def include_compositor(self, anchor):
     yaml = self.loader.fork()
     path = os.path.join(os.path.dirname(self.loader.reader.name), event.value)
     with open(os.path.abspath(path)) as f:
-        return yaml.compose(f)
+        rv = yaml.compose(f)
+        self.loader.composer.anchors.update(yaml.composer.anchors)
+        return rv
 
 
 def exclude_filter(key_node, value_node = None):
